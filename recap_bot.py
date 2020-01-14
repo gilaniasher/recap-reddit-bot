@@ -4,7 +4,15 @@ import praw
 reddit = praw.Reddit('recap-bot')
 subreddit = reddit.subreddit('testingground4bots')
 
-for entry in subreddit.hot(limit=5):
-    print("Title: ", entry.title)
-    print("Text: ", entry.selftext)
-    print("________________________\n")
+keyphrase = '!recapbot '
+
+# Check to see if the keyphrase is in any comments
+for comment in subreddit.stream.comments():
+    if comment.body.startswith(keyphrase):
+        # Remove the keyphrase from the bot request
+        link = comment.body[len(keyphrase):]
+
+        # Just write this link back as a reply as a test
+        comment.reply(link)
+
+        print('Replied!')
