@@ -1,16 +1,28 @@
 # Recap Reddit Bot
-A Reddit bot that uses the SMMRY API to summarize any article (inspired by TL;DR bot)
+A Reddit bot that uses the SMMRY API to summarize any linked article.
 
-# To run your own instance of this bot
+# Example Usage
+When the script is running, go into the specified Subreddit (testingground4bots by default), and comment something in the form:
 
-## Create a Reddit account (or use an existing)
-Follow instructions to create your own Reddit bot to get your client ID and client Secret.
+```
+!recapbot www.{any-article}.com
+```
 
-## Add a praw.ini file
-Create a file called praw.ini in the same directory recap_bot.py is located.
-You will need your client ID, client Secret, and the username/password for your Reddit account.
-Write anything for the user_agent.
+Recap Bot will query the SMMRY API and reply to this comment with the summarized version of the article.
+
+# Running this Bot
+
+* Create a Reddit account (or use an existing)
+* Go to [Reddit Apps](https://www.reddit.com/prefs/apps/)
+* Create a Reddit App, select script, and put anything for the About URL and Redirect URI
+* Register an account with [SMMRY](https://smmry.com/partner)
+* Note down the API Key
+
+
+## Add a praw.ini File
+Add a praw.ini file in the same directory as recap_bot.py. The below username/password are for the Reddit account with the Reddit Bot App.
 Then fill in the file using the following template:
+
 ```
 [recap-bot]
 client_id=
@@ -20,10 +32,17 @@ username=
 user_agent=
 ```
 
-## Add a smmry_credentials.py file
-You will need to go to [SMMRY](www.smmry.com) and create a free account to get your own api key.
-Then create the file smmry_credentials.py in the same directory recap_bot.py is located.
+## Add a smmry_credentials.py File
+Add a smmry_credentials.py in the same directory as recap_bot.py.
 Then fill in the file using the following template:
+
 ```
 api_key = '{YOUR_API_KEY}'
 ```
+
+## Run the Bot
+Run ```python3 recap_bot.py``` and you're finished! Recap Bot will continue to look for comments that start with !recapbot to respond to them.
+
+You can change this keyword trigger by changing the variable ```keyphrase``` in ```recap_bot.py```. You can change the Subreddit by changing the parameter in the ```subreddit``` variable in the same script.
+
+You can run this script on an AWS EC2 instance to have the script run indefinitely.
