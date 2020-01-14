@@ -1,4 +1,5 @@
 import praw
+import re
 
 # Create a Reddit instance using the configuration [recap-bot] from the praw.ini file
 reddit = praw.Reddit('recap-bot')
@@ -10,9 +11,12 @@ keyphrase = '!recapbot '
 for comment in subreddit.stream.comments():
     if comment.body.startswith(keyphrase):
         # Remove the keyphrase from the bot request
-        link = comment.body[len(keyphrase):]
+        match = re.search(r'\[.*\]\((.*)\)', comment.body)
 
-        # Just write this link back as a reply as a test
-        comment.reply(link)
-
-        print('Replied!')
+        if match:
+            link = match.group(1)
+            comment.reply(link)
+            print('Replied!')
+        else:
+            comment.reply('No link found in comment')
+            print('Replied')
