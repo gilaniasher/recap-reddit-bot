@@ -1,5 +1,7 @@
 import praw
 import re
+import requests
+import smmry_credentials
 
 # Create a Reddit instance using the configuration [recap-bot] from the praw.ini file
 reddit = praw.Reddit('recap-bot')
@@ -15,7 +17,17 @@ for comment in subreddit.stream.comments():
 
         if match:
             link = match.group(1)
-            comment.reply(link)
+            
+            # Make API call to SMMRY using API key
+            params = {'SM_API_KEY': smmry_credentials.api_key, 'SM_URL': link}
+            res = requests.get(url='https://api.smmry.com', params=params).json()
+
+            # Reply to user request
+            if 'sm_api_content' in res:
+                comment.reply(res['sm_api_content'])
+            else:
+                comment.reply('Invalid request')
+
             print('Replied!')
         else:
             comment.reply('No link found in comment')

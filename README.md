@@ -19,3 +19,11 @@ password=
 username=
 user_agent=
 ```
+
+## Add a smmry_credentials.py file
+You will need to go to [SMMRY](www.smmry.com) and create a free account to get your own api key.
+Then create the file smmry_credentials.py in the same directory recap_bot.py is located.
+Then fill in the file using the following template:
+```
+api_key = '{YOUR_API_KEY}'
+```
