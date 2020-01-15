@@ -20,7 +20,7 @@ Recap Bot will query the SMMRY API and reply to this comment with the summarized
 * Note down the API Key
 
 
-## Add a praw.ini File
+## praw.ini File
 Fill in the ```praw.ini``` file. Use the username and password for the Reddit account associated with your Bot. 
 
 
@@ -33,7 +33,7 @@ username=
 user_agent=
 ```
 
-## Add a smmry_credentials.py File
+## smmry_credentials.py File
 Fill in the ```smmry_credentials.py``` file using your SMMRY API Key.
 
 ```
