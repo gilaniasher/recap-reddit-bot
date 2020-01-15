@@ -15,13 +15,14 @@ Recap Bot will query the SMMRY API and reply to this comment with the summarized
 * Create a Reddit account (or use an existing)
 * Go to [Reddit Apps](https://www.reddit.com/prefs/apps/)
 * Create a Reddit App, select script, and put anything for the About URL and Redirect URI
+* Note down the Client ID and the Client Secret
 * Register an account with [SMMRY](https://smmry.com/partner)
 * Note down the API Key
 
 
 ## Add a praw.ini File
-Add a praw.ini file in the same directory as recap_bot.py. The below username/password are for the Reddit account with the Reddit Bot App.
-Then fill in the file using the following template:
+Fill in the ```praw.ini``` file. Use the username and password for the Reddit account associated with your Bot. 
+
 
 ```
 [recap-bot]
@@ -33,8 +34,7 @@ user_agent=
 ```
 
 ## Add a smmry_credentials.py File
-Add a smmry_credentials.py in the same directory as recap_bot.py.
-Then fill in the file using the following template:
+Fill in the ```smmry_credentials.py``` file using your SMMRY API Key.
 
 ```
 api_key = '{YOUR_API_KEY}'
