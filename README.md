@@ -2,13 +2,9 @@
 A Reddit bot that uses the SMMRY API to summarize any linked article.
 
 # Example Usage
-When the script is running, go into the specified Subreddit (testingground4bots by default), and comment something in the form:
+By default, the script is listening to the testingground4bots Subreddit. Here is an example of the bot working:
 
-```
-!recapbot www.{any-article}.com
-```
-
-Recap Bot will query the SMMRY API and reply to this comment with the summarized version of the article.
+![Recap Bot Usage](/sample_usage.png)
 
 # Running this Bot
 
